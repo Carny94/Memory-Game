@@ -1,0 +1,54 @@
+*{
+    box-sizing: border-box;
+}
+
+body {
+height: 100vh;
+margin:0;
+font-family: 'Dancing Script', cursive;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+background-color: pink;
+}
+
+header{
+    font-size: 4vmin;
+    color: pink;
+    letter-spacing: 1vmin;
+}
+
+h1 {
+    color:grey;
+    font-size: 3vmin;
+}
+
+.card {
+height: 20vmin;
+width: 20vmin;
+background-color: aliceblue;
+border: 2px solid black;
+
+
+
+}
+#cards {
+    /* display: grid;
+    grid-template-columns: repeat (6, 10vmin);
+    gap: 2vmin;
+    height: 20vmin;
+    width: 20vmin;
+    border: (white) solid 1px;
+    background-color: whitesmoke; */
+    display: flex;
+    
+}
+
+/* #cards > div {
+    height: 6vmin;
+    width: 3vmin;
+    color: black;
+
+
+} */

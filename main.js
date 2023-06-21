@@ -5,10 +5,13 @@
 // 
 // ----------------------------Constants------------------------------ (fixed variables)
 
-
-
-const cards = [ 'A', 'A', 'B', 'B'] ;
-    
+const cards = [
+    { id: 1, content: 'A', matched: false, flipped: false },
+    { id: 2, content: 'B', matched: false, flipped: false },
+    { id: 3, content: 'A', matched: false, flipped: false },
+    { id: 4, content: 'B', matched: false, flipped: false },
+    // ... more card objects
+  ]; 
 
 
 
@@ -28,6 +31,8 @@ let isGameOver; // when there are no cards on the screen . Game is Over!
 const startButton = document.querySelector('#start-button');
 
 const cardEls = document.querySelectorAll('.card');
+
+let userName = document.getElementById("name");
 
 
 
@@ -60,9 +65,14 @@ function renderStartCards() {
        cardEl.textContent =cardValue;
     });  
 }
+function renderMatchedCards() {
+  if(cards[0].flipped === [1]) {
+        cardEls.style.display === 
+    }
 
-function renderstartButton () {
-    if (startButton) 
+        
+
+        
 }
 
 

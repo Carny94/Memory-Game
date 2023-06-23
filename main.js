@@ -77,15 +77,23 @@ function handleCardClick(event) {
   }
 }
 function checkCardMatched () {
-  let [card1, card3] = flippedCards; // matching cards card1, card3. Is there away to add all the cards in the array
-  // const [card2, card4] = flippedCards;
-
-  if(card1.content === card3.content) {
-    return true;// cards did match
-  }else{
-    return false;// cards did not match
+  const card1 = flippedCards[0];
+  const card2 = flippedCards[1];
+  
+  if(card1.content === card2.content) {
+    card1.matched = true;
+    card2.matched= true;
+    flippedCards.splice(0,2); // need to add this same code if not true
   }
-  // h
+  } else if { 
+
+    const card3 = flippedCards[0]
+  }
+
+  
+    
+  
+  
 
 
 

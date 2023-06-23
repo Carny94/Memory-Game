@@ -32,7 +32,7 @@ const startButton = document.querySelector('#start-button');
 
 const cardEls = document.querySelectorAll('.card');
 
-let userName = document.getElementById("name");
+const cardContainer = document.getElementById('cards');
 
 
 
@@ -52,28 +52,98 @@ init();//have to ALWAYS call the init function it initialize all state variables
 
 function init() {  // initialize all state then call render
 
-flippedCards = 0; // no cards should be flipped when game start
-matchedCards = 0; // no matched cards when game start
+flippedCards = []; // no cards should be flipped when game start
+matchedCards = []; // no matched cards when game start
 isGameOver = null; // no winner when game start
 
 }
 //for each / loop through each card element and add the text of each array to each one 
 function renderStartCards() {
 
-   cardEls.forEach(function(cardEl, index) {
-       const cardValue = cards[index];
-       cardEl.textContent =cardValue;
-    });  
+  cardEls.forEach(function(cardEl, index) {
+    const cardValue = cards[index].content;
+    cardEl.textContent =cardValue;
+    cardEl.id = cards[index].id
+    cardEl.addEventListener('click', handleCardClick);
+  });
+}; 
+    
+function handleCardClick(event) {
+  let clickedCard = cards[event.target.id - 1];
+  clickedCard.flipped = true
+  flippedCards.push(clickedCard)
+  if(flippedCards.length === 2) {
+    checkCardMatched() 
+  }
 }
-function renderMatchedCards() {
-  if(cards[0].flipped === [1]) {
-        cardEls.style.display === 
-    }
+function checkCardMatched () {
+  let [card1, card3] = flippedCards; // matching cards card1, card3. Is there away to add all the cards in the array
+  // const [card2, card4] = flippedCards;
+
+  if(card1.content === card3.content) {
+    return true;// cards did match
+  }else{
+    return false;// cards did not match
+  }
+  // h
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// if(clickedCard.flipped = true) {
+// // want it to  retur card clickd value
+//   cards.flipped = cards.content;
+// // return clickedCard.content;
+// console.log(cards.content)
+// }
+// }
+
+
+
+ 
+
+
+ 
+ 
+
+
+
+
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
 
         
 
         
-}
+
 
 
 
@@ -149,5 +219,3 @@ function renderMatchedCards() {
 
 // } else if (gameState === "gameover"){
 //     //display game over sceen
-// }
-

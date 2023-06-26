@@ -10,6 +10,10 @@ const cards = [
     { id: 2, content: 'B', matched: false, flipped: false },
     { id: 3, content: 'A', matched: false, flipped: false },
     { id: 4, content: 'B', matched: false, flipped: false },
+    { id: 5, content: 'A', matched: false, flipped: false },
+    { id: 6, content: 'B', matched: false, flipped: false },
+    { id: 7, content: 'A', matched: false, flipped: false },
+    { id: 8, content: 'B', matched: false, flipped: false },
     // ... more card objects
   ]; 
 
@@ -79,151 +83,15 @@ function handleCardClick(event) {
 function checkCardMatched () {
   const card1 = flippedCards[0];
   const card2 = flippedCards[1];
-  
-  if(card1.content === card2.content) {
-    card1.matched = true;
-    card2.matched= true;
-    flippedCards.splice(0,2); // need to add this same code if not true
+  for(let i = 0; i < cards.length; i++ ) {
+    const currentCard = cards[i];
+  if(currentCard !== card1 && currentCard !== card2) {
+    if (card1.content === currentCard.content) {
+      card1.matched = true;
+      currentCard.matched = true;
+    }
+  } 
   }
-  } else if { 
-
-    const card3 = flippedCards[0]
-  }
-
-  
-    
-  
-  
-
-
-
-
-
-
+  flippedCards.splice(0,2); 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-// if(clickedCard.flipped = true) {
-// // want it to  retur card clickd value
-//   cards.flipped = cards.content;
-// // return clickedCard.content;
-// console.log(cards.content)
-// }
-// }
-
-
-
- 
-
-
- 
- 
-
-
-
-
-    
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
-        
-
-
-
-
-
-
-
-
-
-  
-  
-  
- 
-   
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// //using my STATE Variables in this section to Render or Display elements on the screen when needed
-// function renderGame(){
-// if(gameState ==="playing") {
-//     //update game elements
-
-// } else if (gameState === "gameover"){
-//     //display game over sceen

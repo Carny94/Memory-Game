@@ -13,7 +13,8 @@ const cards = [
     { id: 5, content: 'A', matched: false, flipped: false },
     { id: 6, content: 'B', matched: false, flipped: false },
     { id: 7, content: 'A', matched: false, flipped: false },
-    { id: 8, content: 'B', matched: false, flipped: false },
+    { id: 8, content: 'A', matched: false, flipped: false },
+
     // ... more card objects
   ]; 
 
@@ -36,7 +37,7 @@ const startButton = document.querySelector('#start-button');
 
 const cardEls = document.querySelectorAll('.card');
 
-const cardContainer = document.getElementById('cards');
+
 
 
 
@@ -67,15 +68,15 @@ function renderStartCards() {
   cardEls.forEach(function(cardEl, index) {
     const cardValue = cards[index].content;
     cardEl.textContent =cardValue;
-    cardEl.id = cards[index].id
+    cardEl.id = cards[index].id;
     cardEl.addEventListener('click', handleCardClick);
   });
 }; 
     
 function handleCardClick(event) {
   let clickedCard = cards[event.target.id - 1];
-  clickedCard.flipped = true
-  flippedCards.push(clickedCard)
+  cards.flipped = true;
+  flippedCards.push(clickedCard);
   if(flippedCards.length === 2) {
     checkCardMatched() 
   }
@@ -89,9 +90,19 @@ function checkCardMatched () {
     if (card1.content === currentCard.content) {
       card1.matched = true;
       currentCard.matched = true;
-    }
+    
   } 
   }
   flippedCards.splice(0,2); 
+  }
+  
+  let matchedCardsCount = 0;
+  for(let i =0; i < cards.length; i++) {
+  if(cards[i]) {
+    matchedCardsCount += 1;
+    cards.splice(i, 2);
+    i -= 2;
+  }
+}
 
 }

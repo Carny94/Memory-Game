@@ -13,7 +13,6 @@ const cards = [
   { id: 7, content: 'C', matched: false, flipped: false },
   { id: 8, content: 'D', matched: false, flipped: false },
 
-  // ... more card objects
 ]; 
 
 
@@ -35,7 +34,7 @@ const startButton = document.querySelector('#start-button');
 
 const cardEls = document.querySelectorAll('.card');
 
-
+const scoreEl = document.getElementById('score');
 
 
 
@@ -59,6 +58,7 @@ flippedCards = []; // no cards should be flipped when game start
 matchedCards = []; // no matched cards when game start
 isGameOver = null; // no winner when game start
 score = 0; 
+
 }
 //for each / loop through each card element and add the text of each array to each one 
 function renderStartCards() {
@@ -93,29 +93,41 @@ if(flippedCards.length === 2) {
 function renderCheckCardMatched () {
 const card1 = flippedCards[0];
 const card2 = flippedCards[1];
-console.log("checkCardMatched")
+// console.log("checkCardMatched")
   
 if (card1.content === card2.content) {
   card1.matched = true;
   card2.matched = true;
-  console.log("matched")
+  // console.log("matched")
   //increment the score variable
-  score++
+  score++;
   // update innerText of the score HTML element to value of score
-  console.log(score)
+  const scoreEl = document.getElementById('score');
+  scoreEl.textContent = "score: " + score;
+  // console.log(score)
 } else {
   //map over the flipped cards and for each card get element by card.id and save to a variable called cardEls 
   const cardEls = flippedCards.map(card => document.getElementById(card.id))
   // another forEach flippedcards.forEach, set flipped card to false**
+  flippedCards.forEach(flippedCard => {
+    flippedCard = false;
+    // console.log(false)
+  });
   //use the forEach iterator method to toggle the classlist of each cardEl to flipped 
   cardEls.forEach(cardEl => {
     cardEl.classList.remove("flipped");
   });
-  console.log(cardEls)
+  // console.log(cardEls)
 }
 }
-
-// code check for winner function **
+function renderisGameOver() {
+  if (matchedCards.length === cards.length) {
+    isGameOver = true;
+    const gameOverText = document.getElementById("gameOverText");
+    gameOverText.innerHTML = "Game Over! All cards matched.";
+    
+  }
+}
 
 
 

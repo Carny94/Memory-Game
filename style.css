@@ -10,9 +10,14 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-background-color: pink;
+background-image: repeating-radial-gradient(red, yellow 10%, green 15%);
 }
-
+#gameOverText {
+    font-size: 48px;
+    color: black;
+    text-align: center;
+    margin-top: 20px;
+  }
 header{
     font-size: 4vmin;
     color: pink;
@@ -35,10 +40,16 @@ border: 2px solid black;
 }
 #cards {
     display: grid;
-    display: flex;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
 }
 
 
 .flipped {
-    background-color: blue;
+    background-color: rgb(195, 216, 198);
+}
+
+.score {
+    background-color: black;
 }

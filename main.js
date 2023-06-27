@@ -1,22 +1,20 @@
-
-
 //MVC-
 //Data That Needs To Be Remembered - Players , Whos Turn, Tally points(state variables)
 // 
 // ----------------------------Constants------------------------------ (fixed variables)
 
 const cards = [
-    { id: 1, content: 'A', matched: false, flipped: false },
-    { id: 2, content: 'B', matched: false, flipped: false },
-    { id: 3, content: 'A', matched: false, flipped: false },
-    { id: 4, content: 'B', matched: false, flipped: false },
-    { id: 5, content: 'A', matched: false, flipped: false },
-    { id: 6, content: 'B', matched: false, flipped: false },
-    { id: 7, content: 'A', matched: false, flipped: false },
-    { id: 8, content: 'B', matched: false, flipped: false },
+  { id: 1, content: 'A', matched: false, flipped: false },
+  { id: 2, content: 'B', matched: false, flipped: false },
+  { id: 3, content: 'A', matched: false, flipped: false },
+  { id: 4, content: 'B', matched: false, flipped: false },
+  { id: 5, content: 'C', matched: false, flipped: false },
+  { id: 6, content: 'D', matched: false, flipped: false },
+  { id: 7, content: 'C', matched: false, flipped: false },
+  { id: 8, content: 'D', matched: false, flipped: false },
 
-    // ... more card objects
-  ]; 
+  // ... more card objects
+]; 
 
 
 
@@ -57,61 +55,71 @@ init();//have to ALWAYS call the init function it initialize all state variables
 
 function init() {  // initialize all state then call render
 
-  flippedCards = []; // no cards should be flipped when game start
-  matchedCards = []; // no matched cards when game start
-  isGameOver = null; // no winner when game start
-
+flippedCards = []; // no cards should be flipped when game start
+matchedCards = []; // no matched cards when game start
+isGameOver = null; // no winner when game start
+score = 0; 
 }
 //for each / loop through each card element and add the text of each array to each one 
 function renderStartCards() {
-
-  cardEls.forEach(function(cardEl, index) {
-    const cardValue = cards[index].content;
-    cardEl.textContent =cardValue
-    cardEl.id = cards[index].id;
-    cardEl.addEventListener('click', handleCardClick);
-  });
+cardEls.forEach(function(cardEl, index) {
+  const cardValue = cards[index].content;
+  cardEl.textContent = cardValue;
+  cardEl.id = cards[index].id;
+  cardEl.addEventListener('click', handleCardClick);
+});
 }; 
-function handleCardClick(event) {
+
+function handleCardClick(event) { 
+
+const cardEl = event.target
+const clickedCard = cards[cardEl.id - 1];
+
+//use a conditional to check if the clicked card is flipped or matched and return from function if so 
+if (clickedCard.matched || clickedCard.flipped) {
+  return;
+}
+clickedCard.flipped = true;
+//toggle the flipped classlist on the card element 
+cardEl.classList.add("flipped");
+flippedCards.push(clickedCard);
   
-  const clickedCard = cards[event.target.id - 1];
-  clickedCard.flipped = true;
-  
-  flippedCards.push(clickedCard);
-    
 if(flippedCards.length === 2) {
-    renderCheckCardMatched(); 
-  }
+  renderCheckCardMatched(); 
+  flippedCards.splice(0,2);
+}
 };
+
 function renderCheckCardMatched () {
-  const card1 = flippedCards[0];
-  const card2 = flippedCards[1];
-  for(let i = 0; i < cards.length; i++ ) {
-    const currentCard = cards[i];
-    if(currentCard !== card1 && currentCard !== card2) {
-      
-      if (card1.content === currentCard.content) {
-      card1.matched = true;
-      currentCard.matched = true;
-    }}
-    flippedCards.splice(0,2); 
-  };
-    let matchedCards = 0;
-    for(let i =0; i < cards.length; i++) {
-    if(cards[i]) {
-      matchedCards += 1;
-      cards.splice(i, 2);
-      i -= 2;
-     }
-   
-  }
-};
-function cardsNotMatched () {
-  const unMatched = cards.filter(card => !card.matched);
-      if (unMatched.length > 0) {
-      cards.splice(0, 2);
-      if (unMatched.length > 0) {
-        cards.splice(0, 0, ...unMatched, ...unMatched);  
-      }
+const card1 = flippedCards[0];
+const card2 = flippedCards[1];
+console.log("checkCardMatched")
+  
+if (card1.content === card2.content) {
+  card1.matched = true;
+  card2.matched = true;
+  console.log("matched")
+  //increment the score variable
+  score++
+  // update innerText of the score HTML element to value of score
+  console.log(score)
+} else {
+  //map over the flipped cards and for each card get element by card.id and save to a variable called cardEls 
+  const cardEls = flippedCards.map(card => document.getElementById(card.id))
+  // another forEach flippedcards.forEach, set flipped card to false**
+  //use the forEach iterator method to toggle the classlist of each cardEl to flipped 
+  cardEls.forEach(cardEl => {
+    cardEl.classList.remove("flipped");
+  });
+  console.log(cardEls)
 }
 }
+
+// code check for winner function **
+
+
+
+
+
+
+

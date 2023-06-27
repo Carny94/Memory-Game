@@ -20,7 +20,7 @@ header{
 }
 
 h1 {
-    color:grey;
+    color:black;
     font-size: 3vmin;
 }
 
@@ -35,22 +35,10 @@ border: 2px solid black;
 }
 #cards {
     display: grid;
-    /* grid-template-columns: repeat (6, 10vmin);
-    gap: 2vmin;
-    height: 20vmin;
-    width: 20vmin;
-    border: (white) solid 1px;
-    background-color: whitesmoke; */
     display: flex;
-    
 }
 
-/* #cards > div {
-    height: 6vmin;
-    width: 3vmin;
-    color: black;
-} */
+
 .flipped {
-    background-color: green; /* Example styling */
-    color: #000; 
+    background-color: blue;
 }

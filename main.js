@@ -47,19 +47,17 @@ startButton.addEventListener('click', renderStartCards);
 
 
 //-----------------------------------init()-------------------------------------
-init();//have to ALWAYS call the init function it initialize all state variables.
-// This function make sure all variables have a starting point
-
+init();
 
 //-------------------------------------Function---------------------------------------
 
 
 
-function init() {  // initialize all state then call render
+function init() {  
 
-flippedCards = []; // no cards should be flipped when game start
-matchedCards = []; // no matched cards when game start
-isGameOver = null; // no winner when game start
+flippedCards = []; 
+matchedCards = []; 
+isGameOver = null; 
 score = 0; 
 
 }
@@ -96,33 +94,33 @@ if(flippedCards.length === 2) {
 function renderCheckCardMatched () {
 const card1 = flippedCards[0];
 const card2 = flippedCards[1];
-// console.log("checkCardMatched")
+
   
 if (card1.content === card2.content) {
   card1.matched = true;
   card2.matched = true;
-  // console.log("matched")
+  
   //increment the score variable
   score++;
-  // update innerText of the score HTML element to value of score
+
   const scoreEl = document.getElementById('score');
   scoreEl.textContent = "score: " + score;
   scoreEl.style.fontSize = "32px";
   scoreEl.style.color
-  // console.log(score)
+  
 } else {
   //map over the flipped cards and for each card get element by card.id and save to a variable called cardEls 
   const cardEls = flippedCards.map(card => document.getElementById(card.id))
   // another forEach flippedcards.forEach, set flipped card to false**
   flippedCards.forEach(flippedCard => {
       flippedCard.flipped = false;
-    // console.log(false)
+    
   });
   //use the forEach iterator method to toggle the classlist of each cardEl to flipped 
   cardEls.forEach(cardEl => {
     cardEl.classList.remove("flipped");
   });
-  // console.log(cardEls)
+  
 }
 }
 function renderisGameOver() {
@@ -164,6 +162,3 @@ function renderisGameOver() {
 
 
 
-
-// flippedCards.forEach(flippedCard => {
-//   flippedCard.flipped = false;

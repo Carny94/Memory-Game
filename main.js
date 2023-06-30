@@ -12,7 +12,10 @@ const cards = [
   { id: 6, content: 'D', matched: false, flipped: false },
   { id: 7, content: 'C', matched: false, flipped: false },
   { id: 8, content: 'D', matched: false, flipped: false },
-
+  { id: 9, content: 'E', matched: false, flipped: false },
+  { id: 10, content: 'F', matched: false, flipped: false },
+  { id: 11, content: 'E', matched: false, flipped: false },
+  { id: 12, content: 'F', matched: false, flipped: false },
 ]; 
 
 
@@ -104,13 +107,15 @@ if (card1.content === card2.content) {
   // update innerText of the score HTML element to value of score
   const scoreEl = document.getElementById('score');
   scoreEl.textContent = "score: " + score;
+  scoreEl.style.fontSize = "32px";
+  scoreEl.style.color
   // console.log(score)
 } else {
   //map over the flipped cards and for each card get element by card.id and save to a variable called cardEls 
   const cardEls = flippedCards.map(card => document.getElementById(card.id))
   // another forEach flippedcards.forEach, set flipped card to false**
   flippedCards.forEach(flippedCard => {
-    flippedCard = false;
+      flippedCard.flipped = false;
     // console.log(false)
   });
   //use the forEach iterator method to toggle the classlist of each cardEl to flipped 
@@ -123,7 +128,7 @@ if (card1.content === card2.content) {
 function renderisGameOver() {
   if (matchedCards.length === cards.length) {
     isGameOver = true;
-    const gameOverText = document.getElementById("gameOverText");
+    const gameOverText = document.getElementById("over");
     gameOverText.innerHTML = "Game Over! All cards matched.";
     
   }
@@ -135,3 +140,30 @@ function renderisGameOver() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// flippedCards.forEach(flippedCard => {
+//   flippedCard.flipped = false;

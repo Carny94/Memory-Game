@@ -10,14 +10,9 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-background-image: repeating-radial-gradient(red, yellow 10%, green 15%);
+background-image: url("https://wallpaperaccess.com/full/31367.jpg");
 }
-#gameOverText {
-    font-size: 48px;
-    color: black;
-    text-align: center;
-    margin-top: 20px;
-  }
+
 header{
     font-size: 4vmin;
     color: pink;
@@ -30,10 +25,13 @@ h1 {
 }
 
 .card {
+/* background-image:url("https://skyandtelescope.org/wp-content/uploads/PISNart-900x506.jpg"); */
 height: 20vmin;
 width: 20vmin;
-background-color: aliceblue;
-border: 2px solid black;
+background-color: pink;
+border: 2px solid rgb(132, 67, 132);
+text-align: center;
+font-size: xx-large;
 
 
 
@@ -44,12 +42,37 @@ border: 2px solid black;
     grid-template-rows: repeat(2, 1fr);
     gap: 20px;
 }
-
-
+.content {
+    text-align: center;
+    background-color: pink;
+    /* Add other styles for the content */
+  }
 .flipped {
     background-color: rgb(195, 216, 198);
 }
 
-.score {
-    background-color: black;
-}
+#score {
+    font-size: 32px;
+    animation: colorChange 2s infinite;
+  }
+  @keyframes colorChange {
+    0% {
+      color: whitesmoke;
+    }
+    50% {
+      color: blue;
+    }
+    100% {
+      color: green;
+    }
+  }
+  
+/* #over {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: red;
+} */

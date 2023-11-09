@@ -1,6 +1,4 @@
-//MVC-
-//Data That Needs To Be Remembered - Players , Whos Turn, Tally points(state variables)
-// 
+
 // ----------------------------Constants------------------------------ (fixed variables)
 
 const cards = [
@@ -18,57 +16,36 @@ const cards = [
   { id: 12, content: 'F', matched: false, flipped: false },
 ]; 
 
-
-
 //-----------------------------State Variables-----------------------------------
-
 let startCards; // total cards in the game 
 let flippedCards;// when player p1(player 1) or C(computer) have clicked the cards to flip
 let matchedCards; // after fliiping the cards in matching them
 let isGameOver; // when there are no cards on the screen . Game is Over!
 let score;
-
-
-
 //----------------------------cache---------------------------------------------
-
-
 const startButton = document.querySelector('#start-button');
-
 const cardEls = document.querySelectorAll('.card');
-
 const scoreEl = document.getElementById('score');
-
-
-
 //---------------------------------Event Listeners----------------------------
-
 startButton.addEventListener('click', renderStartCards);
-
-
 //-----------------------------------init()-------------------------------------
 init();
-
 //-------------------------------------Function---------------------------------------
-
-
-
 function init() {  
-
 flippedCards = []; 
 matchedCards = []; 
 isGameOver = null; 
 score = 0; 
-
 }
-//for each / loop through each card element and add the text of each array to each one 
+//for each loop through each card element and add the text of each array to each one 
 function renderStartCards() {
+
 cardEls.forEach(function(cardEl, index) {
   const cardValue = cards[index].content;
   cardEl.textContent = cardValue;
   cardEl.id = cards[index].id;
   cardEl.addEventListener('click', handleCardClick);
-});
+   });
 }; 
 
 function handleCardClick(event) { 

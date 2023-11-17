@@ -17,7 +17,7 @@ const cards = [
 ];
 
 // ---------------------------- State Variables -------------------------
-let startCards;     // total cards in the game 
+let startCards;     // blank card before user click to flip
 let flippedCards;   // when player p1(player 1) or C(computer) have clicked the cards to flip
 let matchedCards;   // after flipping the cards in matching them
 let isGameOver;     // when there are no cards on the screen. Game is Over!
@@ -37,6 +37,20 @@ init();
 // ------------------------------- Functions -------------------------------
 
 function init() {
+  startCards = [
+  { id: 1, content: '', matched: false, flipped: false, blankCard: true },
+  { id: 2, content: '', matched: false, flipped: false, blankCard: true },
+  { id: 3, content: '', matched: false, flipped: false, blankCard: true },
+  { id: 4, content: '', matched: false, flipped: false, blankCard: true },
+  { id: 5, content: '', matched: false, flipped: false, blankCard: true },
+  { id: 6, content: '', matched: false, flipped: false, blankCard: true },
+  { id: 7, content: '', matched: false, flipped: false, blankCard: true },
+  { id: 8, content: '', matched: false, flipped: false, blankCard: true },
+  { id: 9, content: '', matched: false, flipped: false, blankCard: true },
+  { id: 10, content: '', matched: false, flipped: false, blankCard: true },
+  { id: 11, content: '', matched: false, flipped: false , blankCard:true },
+  { id: 12, content: '', matched: false, flipped: false, blankCard:true },
+  ];
   flippedCards = [];
   matchedCards = [];
   isGameOver = null;

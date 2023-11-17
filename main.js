@@ -2,18 +2,18 @@
 // ---------------------------- Constants ------------------------------ (fixed variables)
 //before games start cards
 const cards = [
-  { id: 1, content: '<img src="./public/beans.png">', matched: false, flipped: false },
-  { id: 2, content: 'B', matched: false, flipped: false },
-  { id: 3, content: 'A', matched: false, flipped: false },
-  { id: 4, content: 'B', matched: false, flipped: false },
-  { id: 5, content: 'C', matched: false, flipped: false },
-  { id: 6, content: 'D', matched: false, flipped: false },
-  { id: 7, content: 'C', matched: false, flipped: false },
-  { id: 8, content: 'D', matched: false, flipped: false },
-  { id: 9, content: 'E', matched: false, flipped: false },
-  { id: 10, content: 'F', matched: false, flipped: false },
-  { id: 11, content: 'E', matched: false, flipped: false },
-  { id: 12, content: 'F', matched: false, flipped: false },
+  { id: 1, content: 'a', matched: false, flipped: false, blankCard: false },
+  { id: 2, content: 'B', matched: false, flipped: false, blankCard: false },
+  { id: 3, content: 'A', matched: false, flipped: false, blankCard: false },
+  { id: 4, content: 'B', matched: false, flipped: false, blankCard: false },
+  { id: 5, content: 'C', matched: false, flipped: false, blankCard: false },
+  { id: 6, content: 'D', matched: false, flipped: false, blankCard: false },
+  { id: 7, content: 'C', matched: false, flipped: false, blankCard: false },
+  { id: 8, content: 'D', matched: false, flipped: false, blankCard: false },
+  { id: 9, content: 'E', matched: false, flipped: false, blankCard: false },
+  { id: 10, content: 'F', matched: false, flipped: false, blankCard: false },
+  { id: 11, content: 'E', matched: false, flipped: false , blankCard:false },
+  { id: 12, content: 'F', matched: false, flipped: false, blankCard:false },
 ];
 
 // ---------------------------- State Variables -------------------------

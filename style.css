@@ -28,8 +28,8 @@ h1 {
 /* background-image:url("https://skyandtelescope.org/wp-content/uploads/PISNart-900x506.jpg"); */
 height: 20vmin;
 width: 20vmin;
-background-color: pink;
-border: 2px solid rgb(132, 67, 132);
+background-color: rgb(115, 115, 115);
+border: 2px solid black ;
 text-align: center;
 font-size: xx-large;
 }

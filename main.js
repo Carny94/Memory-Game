@@ -60,9 +60,9 @@ function init() {
 function renderStartCards() {
   //cardEls is referring to .card in HTML
   cardEls.forEach(function (cardEl, index) {
-    const cardValue = cards[index].content;
-    cardEl.innerHTML = cardValue;
-    cardEl.id = cards[index].id;
+    const card = startCards.blankCard ? startCards : cards[index];
+    cardEl.textContent = card.blankCard ? '' : card.content;
+    cardEl.id = card.id;
     cardEl.addEventListener('click', handleCardClick);
   });
 }

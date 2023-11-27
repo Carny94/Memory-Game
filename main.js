@@ -38,9 +38,9 @@ init();
 
 function init() {
   startCards = [
-  { id: 1, content: '', matched: false, flipped: false, blankCard: true },
+  { id: 1, content: 'purple', matched: false, flipped: false, blankCard: true },
   { id: 2, content: '', matched: false, flipped: false, blankCard: true },
-  { id: 3, content: '', matched: false, flipped: false, blankCard: true },
+  { id: 3, content: 'jhj', matched: false, flipped: false, blankCard: true },
   { id: 4, content: '', matched: false, flipped: false, blankCard: true },
   { id: 5, content: '', matched: false, flipped: false, blankCard: true },
   { id: 6, content: '', matched: false, flipped: false, blankCard: true },
@@ -59,30 +59,38 @@ function init() {
 
 function renderStartCards() {
   //cardEls is referring to .card in HTML
-  cardEls.forEach(function (cardEl, index) {
-    const card = startCards.blankCard ? startCards : cards[index];
-    cardEl.textContent = card.blankCard ? '' : card.content;
-    cardEl.id = card.id;
-    cardEl.addEventListener('click', handleCardClick);
+  startCards.forEach(function (cardEl, index) {
+   const cards =
+   cardEl.addEventListener('click', handleCardClick);
+    // console.log('working:' , cardEl.addEventListener)
   });
 }
 
-function handleCardClick(event) {
-  const cardEl = event.target;
-  const clickedCard = cards[cardEl.id - 1];
-
-  if (clickedCard.matched || clickedCard.flipped) {
-    return;
+  function handleCardClick(event) {
+    console.log(handleCardClick)
+    const cardEl = event.target;
+    const cardId = parseInt(cardEl.id)
+    
+    
+      if (isNaN(cardId)) {
+        console.error('Invalid cardId:', cardEl.id);
+      return;
+    }
+  
+    const clickedCard = startCards[0].blankCard ? startCards[0] : cards.find(card => card.id === cardId);
+  
+    if (!clickedCard || clickedCard.matched || clickedCard.flipped) {
+      return;
+    }
+    clickedCard.flipped = true;
+    cardEl.classList.add("flipped");
+    flippedCards.push(clickedCard);
+  
+    if (flippedCards.length === 2) {
+      renderCheckCardMatched();
+      flippedCards.splice(0, 2);
+    }
   }
-  clickedCard.flipped = true;
-  cardEl.classList.add("flipped");
-  flippedCards.push(clickedCard);
-
-  if (flippedCards.length === 2) {
-    renderCheckCardMatched();
-    flippedCards.splice(0, 2);
-  }
-}
 
 function renderCheckCardMatched() {
   const card1 = flippedCards[0];

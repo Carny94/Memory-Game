@@ -44,6 +44,7 @@ cardEls.forEach(function(cardEl, index) {
   const cardValue = cards[index].content;
   cardEl.textContent = cardValue;
   cardEl.id = cards[index].id;
+  cardEl.classList.add("hidden"); 
   cardEl.addEventListener('click', handleCardClick);
    });
 }; 
@@ -53,13 +54,16 @@ function handleCardClick(event) {
 const cardEl = event.target
 const clickedCard = cards[cardEl.id - 1];
 
+
 //use a conditional to check if the clicked card is flipped or matched and return from function if so 
-if (clickedCard.matched || clickedCard.flipped) {
+if (!clickedCard || clickedCard.matched || clickedCard.flipped) {
   return;
 }
 clickedCard.flipped = true;
+const showCardContent = `card-${clickedCard.id}`;
 //toggle the flipped classlist on the card element 
-cardEl.classList.add("flipped");
+cardEl.classList.remove("hidden"); // Remove the "hidden" class
+cardEl.classList.add("flipped", showCardContent);
 flippedCards.push(clickedCard);
   
 if(flippedCards.length === 2) {
@@ -95,6 +99,7 @@ if (card1.content === card2.content) {
   });
   //use the forEach iterator method to toggle the classlist of each cardEl to flipped 
   cardEls.forEach(cardEl => {
+    cardEl.classList.add("hidden"); // Add the "hidden" class back
     cardEl.classList.remove("flipped");
   });
   

@@ -92,15 +92,20 @@ function renderCheckCardMatched() {
     // Map over the flipped cards and for each card, get the element by card.id and save to a variable called cardEls 
     const cardEls = flippedCards.map(card => document.getElementById(card.id));
 
-    // Another forEach flippedcards.forEach, set flipped card to false**
+    
     flippedCards.forEach(flippedCard => {
       flippedCard.flipped = false;
     });
 
-    // Use the forEach iterator method to toggle the classlist of each cardEl to flipped 
-    cardEls.forEach(cardEl => {
-      cardEl.classList.add("hidden"); // Add the "hidden" class back
-      cardEl.classList.remove("flipped", `card-${cardEl.id}`);
+    cardEls.forEach((cardEl, index) => {
+      if (index === 1) {
+        setTimeout(() => {
+          cardEl.classList.remove("flipped", `card-${cardEl.id}`);
+          cardEl.classList.add("hidden");
+        }, 1000); 
+      } else {
+        cardEl.classList.remove("flipped", `card-${cardEl.id}`, "hidden");
+      }
     });
   }
 }

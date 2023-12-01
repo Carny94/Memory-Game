@@ -25,7 +25,6 @@ h1 {
 }
 
 .card {
-/* background-image:url("https://skyandtelescope.org/wp-content/uploads/PISNart-900x506.jpg"); */
 height: 20vmin;
 width: 20vmin;
 background-color: pink;
@@ -33,29 +32,85 @@ border: 2px solid rgb(132, 67, 132);
 text-align: center;
 font-size: xx-large;
 color: transparent;
+position: relative; 
+
 }
 
-.card-1::after {
-  content: ' Hello';
-  color: red;
+.card-1, 
+.card-3{
+  content: url('public/robot.png');
+  border: 2px solid rgb(132, 67, 132);
+  display: block;
+  /* position: relative; */
+  height: 20vmin;
+  width: 100%;
 }
 
+.card-2, 
+.card-4{
+  content: url('public/beans.png');
+  border: 2px solid rgb(132, 67, 132);
+  display: block;
+  /* position: relative; */
+  height: 20vmin;
+  width: 100%;
+}
+
+.card-6, 
+.card-8{
+  content: url('public/cashfan.png');
+  border: 2px solid rgb(132, 67, 132);
+  display: block;
+  /* position: relative; */
+  height: 20vmin;
+  width: 100%;
+}
+
+.card-5, .card-7{
+  content: url('public/dogemoji.png');
+  border: 2px solid rgb(132, 67, 132);
+  display: block;
+  /* position: relative; */
+  height: 20vmin;
+  width: 100%;
+}
+
+.card-9,
+.card-11{
+  content: url('public/hiemoji.png');
+  border: 2px solid rgb(132, 67, 132);
+  display: block;
+  /* position: relative; */
+  height: 20vmin;
+  width: 100%;
+}
+
+.card-10,
+.card-12{
+  content: url('public/ringlight.png');
+  border: 2px solid rgb(132, 67, 132);
+  display: block;
+  /* position: relative; */
+  height: 20vmin;
+  width: 100%;
+}
 #cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr);
   gap: 20px;
 }
-.content {
+/* .content {
   text-align: center;
   background-color: pink;
-  /* Add other styles for the content */
-}
+} */
+
 .flipped {
-  background-color: rgb(195, 216, 198);
+  background-color: whitesmoke;
 }
 .hidden {
   display: grid;
+  
 }
 
 

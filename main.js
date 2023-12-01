@@ -56,15 +56,22 @@ const clickedCard = cards[cardEl.id - 1];
 
 
 //use a conditional to check if the clicked card is flipped or matched and return from function if so 
-if (!clickedCard || clickedCard.matched || clickedCard.flipped) {
+if ( clickedCard.matched || clickedCard.flipped) {
   return;
 }
 clickedCard.flipped = true;
 const showCardContent = `card-${clickedCard.id}`;
-//toggle the flipped classlist on the card element 
+const ifMatched = { matched: false};
+
 cardEl.classList.remove("hidden"); // Remove the "hidden" class
 cardEl.classList.add("flipped", showCardContent);
+
+  if (!ifMatched) {
+    cardEl.classList.add("hidden")
+}
+
 flippedCards.push(clickedCard);
+
   
 if(flippedCards.length === 2) {
   renderCheckCardMatched(); 

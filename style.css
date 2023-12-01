@@ -27,7 +27,7 @@ h1 {
 .card {
 height: 20vmin;
 width: 20vmin;
-background-color: pink;
+background-color: #ffc0cb;
 border: 2px solid rgb(132, 67, 132);
 text-align: center;
 font-size: xx-large;
@@ -94,7 +94,8 @@ position: relative;
   height: 20vmin;
   width: 100%;
 }
-#cards {
+#cards
+{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr);
@@ -110,7 +111,9 @@ position: relative;
 }
 .hidden {
   display: grid;
-  
+}
+.blankCard {
+  background-color: #ffc0cb;
 }
 
 

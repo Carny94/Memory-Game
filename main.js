@@ -49,74 +49,65 @@ cardEls.forEach(function(cardEl, index) {
    });
 }; 
 
-function handleCardClick(event) { 
-
-const cardEl = event.target
-const clickedCard = cards[cardEl.id - 1];
 
 
-//use a conditional to check if the clicked card is flipped or matched and return from function if so 
-if ( clickedCard.matched || clickedCard.flipped) {
-  return;
+function handleCardClick(event) {
+  const cardEl = event.target;
+  const clickedCard = cards[cardEl.id - 1];
+
+  // Use a conditional to check if the clicked card is flipped or matched and return from function if so 
+  if (clickedCard.matched || clickedCard.flipped) {
+    return;
+  }
+
+  clickedCard.flipped = true;
+  const showCardContent = `card-${clickedCard.id}`;
+
+  cardEl.classList.remove("hidden"); // Remove the "hidden" class
+  cardEl.classList.add("flipped", showCardContent);
+  flippedCards.push(clickedCard);
+
+  if (flippedCards.length === 2) {
+    renderCheckCardMatched();
+    flippedCards.splice(0, 2);
+  }
 }
-clickedCard.flipped = true;
-const showCardContent = `card-${clickedCard.id}`;
-const ifMatched = { matched: false};
 
-cardEl.classList.remove("hidden"); // Remove the "hidden" class
-cardEl.classList.add("flipped", showCardContent);
+function renderCheckCardMatched() {
+  const card1 = flippedCards[0];
+  const card2 = flippedCards[1];
 
-  if (!ifMatched) {
-    cardEl.classList.add("hidden")
-}
+  if (card1.content === card2.content) {
+    card1.matched = true;
+    card2.matched = true;
 
-flippedCards.push(clickedCard);
+    // Increment the score variable
+    score++;
 
-  
-if(flippedCards.length === 2) {
-  renderCheckCardMatched(); 
-  flippedCards.splice(0,2);
-}
-};
+    const scoreEl = document.getElementById('score');
+    scoreEl.textContent = "score: " + score;
+    scoreEl.style.fontSize = "32px";
+    scoreEl.style.color;
+  } else {
+    // Map over the flipped cards and for each card, get the element by card.id and save to a variable called cardEls 
+    const cardEls = flippedCards.map(card => document.getElementById(card.id));
 
-function renderCheckCardMatched () {
-const card1 = flippedCards[0];
-const card2 = flippedCards[1];
-
-  
-if (card1.content === card2.content) {
-  card1.matched = true;
-  card2.matched = true;
-  
-  //increment the score variable
-  score++;
-
-  const scoreEl = document.getElementById('score');
-  scoreEl.textContent = "score: " + score;
-  scoreEl.style.fontSize = "32px";
-  scoreEl.style.color
-  
-} else {
-  //map over the flipped cards and for each card get element by card.id and save to a variable called cardEls 
-  const cardEls = flippedCards.map(card => document.getElementById(card.id))
-  // another forEach flippedcards.forEach, set flipped card to false**
-  flippedCards.forEach(flippedCard => {
+    // Another forEach flippedcards.forEach, set flipped card to false**
+    flippedCards.forEach(flippedCard => {
       flippedCard.flipped = false;
-    
-  });
-  //use the forEach iterator method to toggle the classlist of each cardEl to flipped 
-  cardEls.forEach(cardEl => {
-    cardEl.classList.add("hidden"); // Add the "hidden" class back
-    cardEl.classList.remove("flipped");
-  });
-  
-}
+    });
+
+    // Use the forEach iterator method to toggle the classlist of each cardEl to flipped 
+    cardEls.forEach(cardEl => {
+      cardEl.classList.add("hidden"); // Add the "hidden" class back
+      cardEl.classList.remove("flipped", `card-${cardEl.id}`);
+    });
+  }
 }
 function renderisGameOver() {
   if (matchedCards.length === cards.length) {
     isGameOver = true;
     const gameOverText = document.getElementById("over");
     gameOverText.innerHTML = "Game Over! All cards matched.";
-    
   }
 }

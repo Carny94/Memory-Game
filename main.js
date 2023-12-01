@@ -110,9 +110,10 @@ function renderCheckCardMatched() {
   }
 }
 function renderisGameOver() {
-  if (matchedCards.length === cards.length) {
+  if (matchedCards.length === cards.length / 2) {
     isGameOver = true;
     const gameOverText = document.getElementById("over");
     gameOverText.innerHTML = "Game Over! All cards matched.";
   }
+renderisGameOver();
 }

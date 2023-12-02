@@ -52,7 +52,6 @@ position: relative;
   content: url('public/beans.png');
   border: 2px solid rgb(223, 222, 223);
   display: block;
-  /* position: relative; */
   height: 20vmin;
   width: 100%;
 }

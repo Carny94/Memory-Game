@@ -17,10 +17,10 @@ const cards = [
 ]; 
 
 //-----------------------------State Variables-----------------------------------
-let startCards; // total cards in the game 
-let flippedCards;// when player p1(player 1) or C(computer) have clicked the cards to flip
-let matchedCards; // after fliiping the cards in matching them
-let isGameOver; // when there are no cards on the screen . Game is Over!
+let startCards; 
+let flippedCards;
+let matchedCards; 
+let isGameOver; 
 let score;
 //----------------------------cache---------------------------------------------
 const startButton = document.querySelector('#start-button');
@@ -32,13 +32,13 @@ startButton.addEventListener('click', renderStartCards);
 init();
 //-------------------------------------Function---------------------------------------
 function init() {  
+shuffleCards = []
 flippedCards = []; 
 matchedCards = []; 
 isGameOver = true; 
-console.log(isGameOver);
 score = 0; 
 }
-//for each loop through each card element and add the text of each array to each one 
+
 function renderStartCards() {
 
 cardEls.forEach(function(cardEl, index) {
@@ -54,7 +54,6 @@ function handleCardClick(event) {
   const cardEl = event.target;
   const clickedCard = cards[cardEl.id - 1];
 
-  // Use a conditional to check if the clicked card is flipped or matched and return from function if so 
   if (clickedCard.matched || clickedCard.flipped) {
     return;
   }
@@ -62,7 +61,7 @@ function handleCardClick(event) {
   clickedCard.flipped = true;
   const showCardContent = `card-${clickedCard.id}`;
 
-  cardEl.classList.remove("hidden"); // Remove the "hidden" class
+  cardEl.classList.remove("hidden");
   cardEl.classList.add("flipped", showCardContent);
   flippedCards.push(clickedCard);
 
@@ -88,10 +87,8 @@ function renderCheckCardMatched() {
     scoreEl.style.fontSize = "32px";
     scoreEl.style.color;
   } else {
-    // Map over the flipped cards and for each card, get the element by card.id and save to a variable called cardEls 
     const cardEls = flippedCards.map(card => document.getElementById(card.id));
 
-    
     flippedCards.forEach(flippedCard => {
       flippedCard.flipped = false;
     });
@@ -105,13 +102,13 @@ function renderCheckCardMatched() {
       } else {
         cardEl.classList.remove("flipped", `card-${cardEl.id}`, "hidden");
       } 
-        // const matchedCardEls = document.querySelectorAll('.card');
         if (matchedCards.length === 12 ) {
           renderisGameOver();
       }
     });
   }
 }
+
 function renderisGameOver() {
   console.log("matchedCards length:", matchedCards.length);
   if (matchedCards.length === 12 ) {

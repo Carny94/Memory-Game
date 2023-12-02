@@ -34,7 +34,8 @@ init();
 function init() {  
 flippedCards = []; 
 matchedCards = []; 
-isGameOver = null; 
+isGameOver = true; 
+console.log(isGameOver);
 score = 0; 
 }
 //for each loop through each card element and add the text of each array to each one 
@@ -48,8 +49,6 @@ cardEls.forEach(function(cardEl, index) {
   cardEl.addEventListener('click', handleCardClick);
    });
 }; 
-
-
 
 function handleCardClick(event) {
   const cardEl = event.target;
@@ -81,7 +80,7 @@ function renderCheckCardMatched() {
     card1.matched = true;
     card2.matched = true;
 
-    // Increment the score variable
+    matchedCards.push(card1, card2);
     score++;
 
     const scoreEl = document.getElementById('score');
@@ -105,15 +104,20 @@ function renderCheckCardMatched() {
         }, 1000); 
       } else {
         cardEl.classList.remove("flipped", `card-${cardEl.id}`, "hidden");
+      } 
+        // const matchedCardEls = document.querySelectorAll('.card');
+        if (matchedCards.length === 12 ) {
+          renderisGameOver();
       }
     });
   }
 }
 function renderisGameOver() {
-  if (matchedCards.length === cards.length / 2) {
+  console.log("matchedCards length:", matchedCards.length);
+  if (matchedCards.length === 12 ) {
     isGameOver = true;
     const gameOverText = document.getElementById("over");
-    gameOverText.innerHTML = "Game Over! All cards matched.";
+    gameOverText.classList.remove('.hidden-over');
+    // gameOverText.innerHTML = "Game Over! All cards matched.";
   }
-renderisGameOver();
 }

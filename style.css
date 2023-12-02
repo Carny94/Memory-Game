@@ -10,12 +10,13 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-background-image: url("https://wallpaperaccess.com/full/31367.jpg");
+background-color: rgb(133, 130, 130);
 }
 
 header{
+  font-family: 'Vina Sans', sans-serif;
   font-size: 4vmin;
-  color: pink;
+  color: rgb(82, 85, 30);
   letter-spacing: 1vmin;
 }
 
@@ -27,8 +28,8 @@ h1 {
 .card {
 height: 20vmin;
 width: 20vmin;
-background-color: #ffc0cb;
-border: 2px solid rgb(132, 67, 132);
+background-color: #2b2728;
+border: 2px solid rgb(13, 42, 17);
 text-align: center;
 font-size: xx-large;
 color: transparent;
@@ -39,7 +40,7 @@ position: relative;
 .card-1, 
 .card-3{
   content: url('public/robot.png');
-  border: 2px solid rgb(132, 67, 132);
+  border: 2px solid rgb(223, 222, 223);
   display: block;
   /* position: relative; */
   height: 20vmin;
@@ -49,7 +50,7 @@ position: relative;
 .card-2, 
 .card-4{
   content: url('public/beans.png');
-  border: 2px solid rgb(132, 67, 132);
+  border: 2px solid rgb(223, 222, 223);
   display: block;
   /* position: relative; */
   height: 20vmin;
@@ -59,18 +60,17 @@ position: relative;
 .card-6, 
 .card-8{
   content: url('public/cashfan.png');
-  border: 2px solid rgb(132, 67, 132);
+  border: 2px solid rgb(223, 222, 223);
   display: block;
-  /* position: relative; */
   height: 20vmin;
   width: 100%;
 }
 
-.card-5, .card-7{
+.card-5, 
+.card-7{
   content: url('public/dogemoji.png');
-  border: 2px solid rgb(132, 67, 132);
+  border: 2px solid rgb(223, 222, 223);
   display: block;
-  /* position: relative; */
   height: 20vmin;
   width: 100%;
 }
@@ -78,9 +78,8 @@ position: relative;
 .card-9,
 .card-11{
   content: url('public/hiemoji.png');
-  border: 2px solid rgb(132, 67, 132);
+  border: 2px solid rgb(223, 222, 223);
   display: block;
-  /* position: relative; */
   height: 20vmin;
   width: 100%;
 }
@@ -88,9 +87,8 @@ position: relative;
 .card-10,
 .card-12{
   content: url('public/ringlight.png');
-  border: 2px solid rgb(132, 67, 132);
+  border: 2px solid rgb(223, 222, 223);
   display: block;
-  /* position: relative; */
   height: 20vmin;
   width: 100%;
 }
@@ -101,10 +99,6 @@ position: relative;
   grid-template-rows: repeat(2, 1fr);
   gap: 20px;
 }
-/* .content {
-  text-align: center;
-  background-color: pink;
-} */
 
 .flipped {
   background-color: whitesmoke;
@@ -112,27 +106,41 @@ position: relative;
 .hidden {
   display: grid;
 }
-.blankCard {
-  background-color: #ffc0cb;
-}
-
 
 #score {
+  font-family: 'Vina Sans', sans-serif;
   font-size: 32px;
   animation: colorChange 2s infinite;
 }
 @keyframes colorChange {
   0% {
-    color: whitesmoke;
+    color: rgb(208, 203, 203);
   }
   50% {
-    color: blue;
+    color: rgb(95, 95, 99);
   }
   100% {
-    color: green;
+    color: rgb(99, 119, 99);
   }
 }
 
 #over {
-color: antiquewhite;
+  color: white;
+  background-color: black;
+  font-size: 24px;
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999; 
+}
+.hidden-over {
+  display: none;
+}
+
+#start-button {
+  font-family: 'Vina Sans', sans-serif;
+  background-color: transparent;
+  margin-top: 4%;
 }
